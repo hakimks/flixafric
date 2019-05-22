@@ -23,6 +23,18 @@
                 <a class="navbar-brand" href="{% url 'home'%}">FlixAfric</a>
         </div>
     </nav>
+    <div>
+        <h1>Django All auth</h1>
+        {% if user.is_authenticated %}
+            <p>Welcome {{ user.username }}</p>
+        {% else %}
+            <p>Not Signed in</p>
+            <a href="{% url 'login' %}">Click to login</a>
+        {% endif %}
+    </div>
+    {% block content %}
+
+    {% endblock %}
     <div class="contaier">
 
     </div>
