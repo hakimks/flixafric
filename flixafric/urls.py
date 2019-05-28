@@ -15,18 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from tastypie.api import Api
 from . import views
-from api.resources import MovieResource
+from api.resources import MovieResource, ActorResource
 
 from django.conf import settings
 from django.conf.urls.static import static
 
-movie_resource = MovieResource()
+v1_api = Api(api_name='v1')
+v1_api.register(ActorResource())
+v1_api.register(MovieResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePage.as_view(), name='home'),
-    path('api/', include(movie_resource.urls))
+    path('api/', include(v1_api.urls))
 ]
 
 #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

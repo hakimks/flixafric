@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'crispy_forms',
-    'api',
     'movies',
+    'tastypie'
 
 ]
 
